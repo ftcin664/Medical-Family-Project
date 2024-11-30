@@ -1,0 +1,50 @@
+/* Custom styles for the family tree nodes */
+.custom-node {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+  }
+  
+  .node-img-container {
+    margin-bottom: 10px;
+  }
+  
+  .custom-img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover; /* Ensure the image doesn't stretch */
+  }
+  
+  .node-name {
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+  }
+  .link use {
+    display: none;
+}
+.family-tree-node {
+    /* Styles for nodes */
+    background-color: #007bff;
+    border: 2px solid #0056b2;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .family-tree-node .field_0 {
+    /* Styles for the name field */
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .family-tree-connector {
+    /* Styles for connectors */
+    stroke: #6c757d;
+    stroke-width: 2;
+  }
+
+  
