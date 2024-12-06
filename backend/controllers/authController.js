@@ -7,7 +7,7 @@ const SibApiV3Sdk = require('sib-api-v3-sdk');
 const client = SibApiV3Sdk.ApiClient.instance;
 
 const { generateToken } = require('../utils/jwt.js');
-const { mailConfig } = require('../config/mailConfig');
+const mailConfig = require('../config/mailConfig');
 const { jwtConfig } = require('../config/jwtConfig');
 
 const apiKey = client.authentications['api-key'];
@@ -61,7 +61,7 @@ const signUp = async (req, res) => {
         // Send OTP to user's email
         await sendOtp(email, otp);
 
-        res.status(201).json({ message: 'User created. OTP sent to email.' });
+        res.status(200).json({ id: newUser.id, message: 'User created. OTP sent to email.' });
     } catch (error) {
         console.error('Error signing up user:', error); // Log the error for debugging
         res.status(500).json({ error: 'Error signing up user' });
@@ -85,7 +85,7 @@ const login = async (req, res) => {
         }
 
         // Generate a token
-        const token = generateToken(user._id, jwtConfig.secret); // Use Mongoose's _id and JWT secret from config
+        const token = generateToken(user._id); // Use Mongoose's _id and JWT secret from config
 
         // Return user info and token
         res.status(200).json({
@@ -142,18 +142,20 @@ const logInWithToken = async (req, res) => {
 };
 
 const verifyOtp = async (req, res) => {
-    const { email, otp } = req.body;
+    const { id, otp } = req.body;
     try {
-        const user = await User.findOne({ email });
+        const user = await User.findById(id);
         if (!user) return res.status(404).json({ error: 'User not found' });
-
+        console.log(id, user, otp)
         // Check if OTP is valid and not expired
-        if (user.otp === otp) {
+        if (user.otp == otp) {
             if (Date.now() > user.otp_expiration) {
                 return res.status(400).json({ error: 'OTP has expired' });
             }
-            const token = generateToken(user._id, jwtConfig.secret);
+            console.log("A")
+            const token = generateToken(user._id);
             user.status = true; // Set status to true
+            console.log("B")
             await user.save(); // Save the updated user record
 
             res.status(200).json({ user: user, token: token });

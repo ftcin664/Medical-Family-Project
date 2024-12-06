@@ -58,6 +58,7 @@ const userSchema = new mongoose.Schema({
     status: {
         type: Boolean,
         required: true,
+        default: false,
     },
     otp_expiration: {
         type: Date,
@@ -69,12 +70,15 @@ const userSchema = new mongoose.Schema({
     },
     father: {
         type: Object,
+        default: {},
     }, 
     mother: {
         type: Object,
+        default: {},
     },
     sibling: {
-        type: Object,
+        type: Array,
+        default: [],
     },
     partner: {
         type: Object,
@@ -82,6 +86,7 @@ const userSchema = new mongoose.Schema({
     },
     children: {
         type: Array,
+        default: [],
     }
 }, {
     timestamps: true, // Adds createdAt and updatedAt fields
@@ -102,13 +107,15 @@ userSchema.pre('save', function(next) {
 });
 
 // Compare password method
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-        if (err) return cb(err);
-        cb(null, isMatch);
+userSchema.methods.comparePassword = function(candidatePassword) {
+    return new Promise((resolve, reject) => {
+        bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+            if (err) return reject(err);
+            resolve(isMatch);
+        });
     });
 };
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema, 'users');
 
 module.exports = User;

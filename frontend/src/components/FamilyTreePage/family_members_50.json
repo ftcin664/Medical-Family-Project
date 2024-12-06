@@ -1,0 +1,1608 @@
+[
+    {
+        "id": "1",
+        "email": "user1@example.com",
+        "fullname": "Person 1",
+        "phone_number": "+910912345001",
+        "image_url": "public/uploads/image1.png",
+        "dob": "1990-06-24T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 3",
+        "city": "City 8",
+        "status": true,
+        "father": null,
+        "mother": null,
+        "siblings": [
+            "35"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "35",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "35"
+        },
+        "children": {
+            "35": [
+                {
+                    "id": "44",
+                    "status": "NOT_ACTIVE"
+                },
+                {
+                    "id": "41",
+                    "status": "ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "2",
+        "email": "user2@example.com",
+        "fullname": "Person 2",
+        "phone_number": "+910912345002",
+        "image_url": "public/uploads/image2.png",
+        "dob": "2017-03-22T00:00:00",
+        "gender": "Female",
+        "country": "Country 5",
+        "city": "City 7",
+        "status": true,
+        "father": null,
+        "mother": null,
+        "siblings": [
+            "47",
+            "1",
+            "38"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "47",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "47"
+        },
+        "children": {
+            "47": []
+        }
+    },
+    {
+        "id": "3",
+        "email": "user3@example.com",
+        "fullname": "Person 3",
+        "phone_number": "+910912345003",
+        "image_url": "public/uploads/image3.png",
+        "dob": "1999-12-11T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 3",
+        "city": "City 4",
+        "status": true,
+        "father": "1",
+        "mother": "2",
+        "siblings": [
+            "2"
+        ],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "4",
+        "email": "user4@example.com",
+        "fullname": "Person 4",
+        "phone_number": "+910912345004",
+        "image_url": "public/uploads/image4.png",
+        "dob": "1960-03-07T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 4",
+        "city": "City 5",
+        "status": false,
+        "father": "2",
+        "mother": "3",
+        "siblings": [],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "5",
+        "email": "user5@example.com",
+        "fullname": "Person 5",
+        "phone_number": "+910912345005",
+        "image_url": "public/uploads/image5.png",
+        "dob": "2003-04-30T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 5",
+        "city": "City 3",
+        "status": true,
+        "father": "2",
+        "mother": "4",
+        "siblings": [
+            "2"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "2",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "2"
+        },
+        "children": {
+            "2": []
+        }
+    },
+    {
+        "id": "6",
+        "email": "user6@example.com",
+        "fullname": "Person 6",
+        "phone_number": "+910912345006",
+        "image_url": "public/uploads/image6.png",
+        "dob": "1995-12-20T00:00:00",
+        "gender": "Female",
+        "country": "Country 2",
+        "city": "City 3",
+        "status": true,
+        "father": "3",
+        "mother": "4",
+        "siblings": [],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "7",
+        "email": "user7@example.com",
+        "fullname": "Person 7",
+        "phone_number": "+910912345007",
+        "image_url": "public/uploads/image7.png",
+        "dob": "1977-09-22T00:00:00",
+        "gender": "Female",
+        "country": "Country 2",
+        "city": "City 10",
+        "status": true,
+        "father": "5",
+        "mother": "1",
+        "siblings": [],
+        "partners": {
+            "partners": [
+                {
+                    "id": "17",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "17"
+        },
+        "children": {
+            "17": [
+                {
+                    "id": "42",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "10",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "26",
+                    "status": "NOT_ACTIVE"
+                },
+                {
+                    "id": "30",
+                    "status": "ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "8",
+        "email": "user8@example.com",
+        "fullname": "Person 8",
+        "phone_number": "+910912345008",
+        "image_url": "public/uploads/image8.png",
+        "dob": "1993-10-30T00:00:00",
+        "gender": "Male",
+        "country": "Country 2",
+        "city": "City 9",
+        "status": false,
+        "father": "1",
+        "mother": "7",
+        "siblings": [],
+        "partners": {
+            "partners": [
+                {
+                    "id": "44",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "44"
+        },
+        "children": {
+            "44": [
+                {
+                    "id": "11",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "48",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "6",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "30",
+                    "status": "PENDING"
+                }
+            ]
+        }
+    },
+    {
+        "id": "9",
+        "email": "user9@example.com",
+        "fullname": "Person 9",
+        "phone_number": "+910912345009",
+        "image_url": "public/uploads/image9.png",
+        "dob": "2011-03-12T00:00:00",
+        "gender": "Male",
+        "country": "Country 5",
+        "city": "City 3",
+        "status": false,
+        "father": "6",
+        "mother": "5",
+        "siblings": [],
+        "partners": {
+            "partners": [
+                {
+                    "id": "17",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "17"
+        },
+        "children": {
+            "17": []
+        }
+    },
+    {
+        "id": "10",
+        "email": "user10@example.com",
+        "fullname": "Person 10",
+        "phone_number": "+910912345010",
+        "image_url": "public/uploads/image10.png",
+        "dob": "2015-11-24T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 1",
+        "city": "City 1",
+        "status": true,
+        "father": "7",
+        "mother": "3",
+        "siblings": [
+            "17",
+            "14"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "40",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "40"
+        },
+        "children": {
+            "40": [
+                {
+                    "id": "30",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "21",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "37",
+                    "status": "ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "11",
+        "email": "user11@example.com",
+        "fullname": "Person 11",
+        "phone_number": "+910912345011",
+        "image_url": "public/uploads/image11.png",
+        "dob": "1971-08-16T00:00:00",
+        "gender": "Male",
+        "country": "Country 5",
+        "city": "City 5",
+        "status": false,
+        "father": "2",
+        "mother": "2",
+        "siblings": [
+            "33",
+            "9",
+            "14"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "29",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "29"
+        },
+        "children": {
+            "29": [
+                {
+                    "id": "37",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "48",
+                    "status": "PENDING"
+                }
+            ]
+        }
+    },
+    {
+        "id": "12",
+        "email": "user12@example.com",
+        "fullname": "Person 12",
+        "phone_number": "+910912345012",
+        "image_url": "public/uploads/image12.png",
+        "dob": "1973-03-01T00:00:00",
+        "gender": "Male",
+        "country": "Country 2",
+        "city": "City 9",
+        "status": false,
+        "father": "2",
+        "mother": "2",
+        "siblings": [],
+        "partners": {
+            "partners": [
+                {
+                    "id": "41",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "41"
+        },
+        "children": {
+            "41": [
+                {
+                    "id": "48",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "31",
+                    "status": "NOT_ACTIVE"
+                },
+                {
+                    "id": "9",
+                    "status": "NOT_ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "13",
+        "email": "user13@example.com",
+        "fullname": "Person 13",
+        "phone_number": "+910912345013",
+        "image_url": "public/uploads/image13.png",
+        "dob": "1991-01-20T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 3",
+        "city": "City 7",
+        "status": true,
+        "father": "4",
+        "mother": "10",
+        "siblings": [
+            "41"
+        ],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "14",
+        "email": "user14@example.com",
+        "fullname": "Person 14",
+        "phone_number": "+910912345014",
+        "image_url": "public/uploads/image14.png",
+        "dob": "2010-09-08T00:00:00",
+        "gender": "Female",
+        "country": "Country 3",
+        "city": "City 6",
+        "status": true,
+        "father": "2",
+        "mother": "8",
+        "siblings": [
+            "5",
+            "13"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "4",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "4"
+        },
+        "children": {
+            "4": [
+                {
+                    "id": "30",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "2",
+                    "status": "ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "15",
+        "email": "user15@example.com",
+        "fullname": "Person 15",
+        "phone_number": "+910912345015",
+        "image_url": "public/uploads/image15.png",
+        "dob": "2016-02-27T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 1",
+        "city": "City 8",
+        "status": true,
+        "father": "4",
+        "mother": "6",
+        "siblings": [
+            "35",
+            "7",
+            "34"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "41",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "41"
+        },
+        "children": {
+            "41": [
+                {
+                    "id": "24",
+                    "status": "PENDING"
+                }
+            ]
+        }
+    },
+    {
+        "id": "16",
+        "email": "user16@example.com",
+        "fullname": "Person 16",
+        "phone_number": "+910912345016",
+        "image_url": "public/uploads/image16.png",
+        "dob": "2016-03-29T00:00:00",
+        "gender": "Female",
+        "country": "Country 3",
+        "city": "City 9",
+        "status": true,
+        "father": "6",
+        "mother": "12",
+        "siblings": [
+            "24",
+            "15",
+            "9"
+        ],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "17",
+        "email": "user17@example.com",
+        "fullname": "Person 17",
+        "phone_number": "+910912345017",
+        "image_url": "public/uploads/image17.png",
+        "dob": "2011-09-19T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 3",
+        "city": "City 9",
+        "status": true,
+        "father": "16",
+        "mother": "3",
+        "siblings": [
+            "14",
+            "49",
+            "15"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "10",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "10"
+        },
+        "children": {
+            "10": [
+                {
+                    "id": "25",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "7",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "4",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "29",
+                    "status": "NOT_ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "18",
+        "email": "user18@example.com",
+        "fullname": "Person 18",
+        "phone_number": "+910912345018",
+        "image_url": "public/uploads/image18.png",
+        "dob": "1999-03-31T00:00:00",
+        "gender": "Male",
+        "country": "Country 2",
+        "city": "City 10",
+        "status": true,
+        "father": "17",
+        "mother": "13",
+        "siblings": [
+            "9"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "45",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "45"
+        },
+        "children": {
+            "45": []
+        }
+    },
+    {
+        "id": "19",
+        "email": "user19@example.com",
+        "fullname": "Person 19",
+        "phone_number": "+910912345019",
+        "image_url": "public/uploads/image19.png",
+        "dob": "1988-05-08T00:00:00",
+        "gender": "Male",
+        "country": "Country 1",
+        "city": "City 1",
+        "status": true,
+        "father": "1",
+        "mother": "8",
+        "siblings": [],
+        "partners": {
+            "partners": [
+                {
+                    "id": "48",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "48"
+        },
+        "children": {
+            "48": [
+                {
+                    "id": "3",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "10",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "48",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "27",
+                    "status": "PENDING"
+                }
+            ]
+        }
+    },
+    {
+        "id": "20",
+        "email": "user20@example.com",
+        "fullname": "Person 20",
+        "phone_number": "+910912345020",
+        "image_url": "public/uploads/image20.png",
+        "dob": "1953-06-03T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 4",
+        "city": "City 6",
+        "status": true,
+        "father": "2",
+        "mother": "17",
+        "siblings": [
+            "14"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "48",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "48"
+        },
+        "children": {
+            "48": []
+        }
+    },
+    {
+        "id": "21",
+        "email": "user21@example.com",
+        "fullname": "Person 21",
+        "phone_number": "+910912345021",
+        "image_url": "public/uploads/image21.png",
+        "dob": "1978-12-23T00:00:00",
+        "gender": "Male",
+        "country": "Country 4",
+        "city": "City 5",
+        "status": true,
+        "father": "8",
+        "mother": "14",
+        "siblings": [],
+        "partners": {
+            "partners": [
+                {
+                    "id": "34",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "34"
+        },
+        "children": {
+            "34": []
+        }
+    },
+    {
+        "id": "22",
+        "email": "user22@example.com",
+        "fullname": "Person 22",
+        "phone_number": "+910912345022",
+        "image_url": "public/uploads/image22.png",
+        "dob": "1978-04-23T00:00:00",
+        "gender": "Female",
+        "country": "Country 3",
+        "city": "City 8",
+        "status": false,
+        "father": "6",
+        "mother": "3",
+        "siblings": [
+            "20",
+            "37"
+        ],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "23",
+        "email": "user23@example.com",
+        "fullname": "Person 23",
+        "phone_number": "+910912345023",
+        "image_url": "public/uploads/image23.png",
+        "dob": "1975-06-18T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 3",
+        "city": "City 5",
+        "status": true,
+        "father": "16",
+        "mother": "12",
+        "siblings": [
+            "27",
+            "23"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "40",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "40"
+        },
+        "children": {
+            "40": [
+                {
+                    "id": "45",
+                    "status": "NOT_ACTIVE"
+                },
+                {
+                    "id": "26",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "1",
+                    "status": "NOT_ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "24",
+        "email": "user24@example.com",
+        "fullname": "Person 24",
+        "phone_number": "+910912345024",
+        "image_url": "public/uploads/image24.png",
+        "dob": "1983-08-14T00:00:00",
+        "gender": "Female",
+        "country": "Country 5",
+        "city": "City 8",
+        "status": true,
+        "father": "9",
+        "mother": "1",
+        "siblings": [
+            "27"
+        ],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "25",
+        "email": "user25@example.com",
+        "fullname": "Person 25",
+        "phone_number": "+910912345025",
+        "image_url": "public/uploads/image25.png",
+        "dob": "2002-09-17T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 2",
+        "city": "City 2",
+        "status": false,
+        "father": "7",
+        "mother": "20",
+        "siblings": [],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "26",
+        "email": "user26@example.com",
+        "fullname": "Person 26",
+        "phone_number": "+910912345026",
+        "image_url": "public/uploads/image26.png",
+        "dob": "1980-12-18T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 2",
+        "city": "City 9",
+        "status": false,
+        "father": "7",
+        "mother": "2",
+        "siblings": [
+            "12",
+            "7"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "48",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "48"
+        },
+        "children": {
+            "48": []
+        }
+    },
+    {
+        "id": "27",
+        "email": "user27@example.com",
+        "fullname": "Person 27",
+        "phone_number": "+910912345027",
+        "image_url": "public/uploads/image27.png",
+        "dob": "1973-02-09T00:00:00",
+        "gender": "Male",
+        "country": "Country 3",
+        "city": "City 4",
+        "status": false,
+        "father": "6",
+        "mother": "25",
+        "siblings": [],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "28",
+        "email": "user28@example.com",
+        "fullname": "Person 28",
+        "phone_number": "+910912345028",
+        "image_url": "public/uploads/image28.png",
+        "dob": "2015-11-07T00:00:00",
+        "gender": "Male",
+        "country": "Country 4",
+        "city": "City 6",
+        "status": false,
+        "father": "7",
+        "mother": "17",
+        "siblings": [
+            "49",
+            "34"
+        ],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "29",
+        "email": "user29@example.com",
+        "fullname": "Person 29",
+        "phone_number": "+910912345029",
+        "image_url": "public/uploads/image29.png",
+        "dob": "2002-09-17T00:00:00",
+        "gender": "Male",
+        "country": "Country 1",
+        "city": "City 7",
+        "status": true,
+        "father": "26",
+        "mother": "5",
+        "siblings": [
+            "24"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "6",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "6"
+        },
+        "children": {
+            "6": [
+                {
+                    "id": "10",
+                    "status": "NOT_ACTIVE"
+                },
+                {
+                    "id": "33",
+                    "status": "NOT_ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "30",
+        "email": "user30@example.com",
+        "fullname": "Person 30",
+        "phone_number": "+910912345030",
+        "image_url": "public/uploads/image30.png",
+        "dob": "2013-01-23T00:00:00",
+        "gender": "Male",
+        "country": "Country 3",
+        "city": "City 6",
+        "status": true,
+        "father": "21",
+        "mother": "16",
+        "siblings": [
+            "7",
+            "15"
+        ],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "31",
+        "email": "user31@example.com",
+        "fullname": "Person 31",
+        "phone_number": "+910912345031",
+        "image_url": "public/uploads/image31.png",
+        "dob": "1978-09-01T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 2",
+        "city": "City 3",
+        "status": true,
+        "father": "25",
+        "mother": "13",
+        "siblings": [
+            "12",
+            "21"
+        ],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "32",
+        "email": "user32@example.com",
+        "fullname": "Person 32",
+        "phone_number": "+910912345032",
+        "image_url": "public/uploads/image32.png",
+        "dob": "1975-07-13T00:00:00",
+        "gender": "Female",
+        "country": "Country 3",
+        "city": "City 3",
+        "status": true,
+        "father": "29",
+        "mother": "13",
+        "siblings": [
+            "4",
+            "16"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "12",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "12"
+        },
+        "children": {
+            "12": [
+                {
+                    "id": "10",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "40",
+                    "status": "ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "33",
+        "email": "user33@example.com",
+        "fullname": "Person 33",
+        "phone_number": "+910912345033",
+        "image_url": "public/uploads/image33.png",
+        "dob": "1966-11-07T00:00:00",
+        "gender": "Male",
+        "country": "Country 2",
+        "city": "City 6",
+        "status": true,
+        "father": "10",
+        "mother": "3",
+        "siblings": [
+            "28",
+            "9",
+            "27"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "20",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "20"
+        },
+        "children": {
+            "20": []
+        }
+    },
+    {
+        "id": "34",
+        "email": "user34@example.com",
+        "fullname": "Person 34",
+        "phone_number": "+910912345034",
+        "image_url": "public/uploads/image34.png",
+        "dob": "1998-09-01T00:00:00",
+        "gender": "Male",
+        "country": "Country 2",
+        "city": "City 9",
+        "status": true,
+        "father": "13",
+        "mother": "23",
+        "siblings": [
+            "24",
+            "23"
+        ],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "35",
+        "email": "user35@example.com",
+        "fullname": "Person 35",
+        "phone_number": "+910912345035",
+        "image_url": "public/uploads/image35.png",
+        "dob": "2001-06-29T00:00:00",
+        "gender": "Female",
+        "country": "Country 4",
+        "city": "City 9",
+        "status": true,
+        "father": "23",
+        "mother": "22",
+        "siblings": [
+            "34"
+        ],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "36",
+        "email": "user36@example.com",
+        "fullname": "Person 36",
+        "phone_number": "+910912345036",
+        "image_url": "public/uploads/image36.png",
+        "dob": "2019-09-15T00:00:00",
+        "gender": "Male",
+        "country": "Country 4",
+        "city": "City 7",
+        "status": false,
+        "father": "9",
+        "mother": "20",
+        "siblings": [
+            "42",
+            "39"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "14",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "14"
+        },
+        "children": {
+            "14": [
+                {
+                    "id": "40",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "39",
+                    "status": "NOT_ACTIVE"
+                },
+                {
+                    "id": "36",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "37",
+                    "status": "PENDING"
+                }
+            ]
+        }
+    },
+    {
+        "id": "37",
+        "email": "user37@example.com",
+        "fullname": "Person 37",
+        "phone_number": "+910912345037",
+        "image_url": "public/uploads/image37.png",
+        "dob": "1956-04-14T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 3",
+        "city": "City 7",
+        "status": true,
+        "father": "28",
+        "mother": "31",
+        "siblings": [
+            "16",
+            "41"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "50",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "50"
+        },
+        "children": {
+            "50": [
+                {
+                    "id": "40",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "15",
+                    "status": "NOT_ACTIVE"
+                },
+                {
+                    "id": "22",
+                    "status": "ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "38",
+        "email": "user38@example.com",
+        "fullname": "Person 38",
+        "phone_number": "+910912345038",
+        "image_url": "public/uploads/image38.png",
+        "dob": "1950-01-02T00:00:00",
+        "gender": "Female",
+        "country": "Country 1",
+        "city": "City 7",
+        "status": false,
+        "father": "9",
+        "mother": "35",
+        "siblings": [
+            "21"
+        ],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "39",
+        "email": "user39@example.com",
+        "fullname": "Person 39",
+        "phone_number": "+910912345039",
+        "image_url": "public/uploads/image39.png",
+        "dob": "1979-04-27T00:00:00",
+        "gender": "Female",
+        "country": "Country 1",
+        "city": "City 2",
+        "status": true,
+        "father": "13",
+        "mother": "26",
+        "siblings": [],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "40",
+        "email": "user40@example.com",
+        "fullname": "Person 40",
+        "phone_number": "+910912345040",
+        "image_url": "public/uploads/image40.png",
+        "dob": "1988-01-24T00:00:00",
+        "gender": "Female",
+        "country": "Country 4",
+        "city": "City 9",
+        "status": false,
+        "father": "18",
+        "mother": "32",
+        "siblings": [
+            "38",
+            "44"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "5",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "5"
+        },
+        "children": {
+            "5": [
+                {
+                    "id": "21",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "16",
+                    "status": "ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "41",
+        "email": "user41@example.com",
+        "fullname": "Person 41",
+        "phone_number": "+910912345041",
+        "image_url": "public/uploads/image41.png",
+        "dob": "1952-01-17T00:00:00",
+        "gender": "Male",
+        "country": "Country 4",
+        "city": "City 2",
+        "status": false,
+        "father": "36",
+        "mother": "17",
+        "siblings": [],
+        "partners": {
+            "partners": [
+                {
+                    "id": "17",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "17"
+        },
+        "children": {
+            "17": [
+                {
+                    "id": "21",
+                    "status": "NOT_ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "42",
+        "email": "user42@example.com",
+        "fullname": "Person 42",
+        "phone_number": "+910912345042",
+        "image_url": "public/uploads/image42.png",
+        "dob": "1990-09-13T00:00:00",
+        "gender": "Female",
+        "country": "Country 2",
+        "city": "City 1",
+        "status": false,
+        "father": "19",
+        "mother": "27",
+        "siblings": [
+            "13"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "45",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "45"
+        },
+        "children": {
+            "45": [
+                {
+                    "id": "46",
+                    "status": "NOT_ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "43",
+        "email": "user43@example.com",
+        "fullname": "Person 43",
+        "phone_number": "+910912345043",
+        "image_url": "public/uploads/image43.png",
+        "dob": "1972-10-17T00:00:00",
+        "gender": "Female",
+        "country": "Country 5",
+        "city": "City 7",
+        "status": true,
+        "father": "2",
+        "mother": "3",
+        "siblings": [
+            "1",
+            "35",
+            "21"
+        ],
+        "partners": {
+            "partners": [],
+            "current": null
+        },
+        "children": {}
+    },
+    {
+        "id": "44",
+        "email": "user44@example.com",
+        "fullname": "Person 44",
+        "phone_number": "+910912345044",
+        "image_url": "public/uploads/image44.png",
+        "dob": "1987-04-29T00:00:00",
+        "gender": "Female",
+        "country": "Country 5",
+        "city": "City 7",
+        "status": false,
+        "father": "40",
+        "mother": "27",
+        "siblings": [
+            "26"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "43",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "43"
+        },
+        "children": {
+            "43": []
+        }
+    },
+    {
+        "id": "45",
+        "email": "user45@example.com",
+        "fullname": "Person 45",
+        "phone_number": "+910912345045",
+        "image_url": "public/uploads/image45.png",
+        "dob": "1964-05-19T00:00:00",
+        "gender": "Male",
+        "country": "Country 1",
+        "city": "City 8",
+        "status": true,
+        "father": "33",
+        "mother": "13",
+        "siblings": [
+            "32"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "26",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "26"
+        },
+        "children": {
+            "26": [
+                {
+                    "id": "39",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "35",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "46",
+                    "status": "ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "46",
+        "email": "user46@example.com",
+        "fullname": "Person 46",
+        "phone_number": "+910912345046",
+        "image_url": "public/uploads/image46.png",
+        "dob": "1994-02-03T00:00:00",
+        "gender": "Non-Binary",
+        "country": "Country 5",
+        "city": "City 10",
+        "status": false,
+        "father": "2",
+        "mother": "6",
+        "siblings": [],
+        "partners": {
+            "partners": [
+                {
+                    "id": "15",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "15"
+        },
+        "children": {
+            "15": []
+        }
+    },
+    {
+        "id": "47",
+        "email": "user47@example.com",
+        "fullname": "Person 47",
+        "phone_number": "+910912345047",
+        "image_url": "public/uploads/image47.png",
+        "dob": "2018-11-15T00:00:00",
+        "gender": "Male",
+        "country": "Country 5",
+        "city": "City 6",
+        "status": true,
+        "father": "24",
+        "mother": "41",
+        "siblings": [
+            "50",
+            "19",
+            "34"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "22",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "22"
+        },
+        "children": {
+            "22": [
+                {
+                    "id": "9",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "6",
+                    "status": "NOT_ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "48",
+        "email": "user48@example.com",
+        "fullname": "Person 48",
+        "phone_number": "+910912345048",
+        "image_url": "public/uploads/image48.png",
+        "dob": "1993-09-12T00:00:00",
+        "gender": "Male",
+        "country": "Country 1",
+        "city": "City 6",
+        "status": true,
+        "father": "18",
+        "mother": "6",
+        "siblings": [
+            "15",
+            "6"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "2",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "2"
+        },
+        "children": {
+            "2": [
+                {
+                    "id": "6",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "33",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "17",
+                    "status": "NOT_ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "49",
+        "email": "user49@example.com",
+        "fullname": "Person 49",
+        "phone_number": "+910912345049",
+        "image_url": "public/uploads/image49.png",
+        "dob": "1975-07-30T00:00:00",
+        "gender": "Male",
+        "country": "Country 4",
+        "city": "City 5",
+        "status": false,
+        "father": "29",
+        "mother": "29",
+        "siblings": [
+            "20",
+            "5",
+            "45"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "14",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "14"
+        },
+        "children": {
+            "14": [
+                {
+                    "id": "4",
+                    "status": "NOT_ACTIVE"
+                },
+                {
+                    "id": "26",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "30",
+                    "status": "NOT_ACTIVE"
+                }
+            ]
+        }
+    },
+    {
+        "id": "50",
+        "email": "user50@example.com",
+        "fullname": "Person 50",
+        "phone_number": "+910912345050",
+        "image_url": "public/uploads/image50.png",
+        "dob": "1961-07-10T00:00:00",
+        "gender": "Female",
+        "country": "Country 1",
+        "city": "City 4",
+        "status": true,
+        "father": "44",
+        "mother": "44",
+        "siblings": [
+            "39",
+            "50",
+            "29"
+        ],
+        "partners": {
+            "partners": [
+                {
+                    "id": "11",
+                    "status": "ACTIVE"
+                }
+            ],
+            "current": "11"
+        },
+        "children": {
+            "11": [
+                {
+                    "id": "1",
+                    "status": "PENDING"
+                },
+                {
+                    "id": "28",
+                    "status": "ACTIVE"
+                },
+                {
+                    "id": "37",
+                    "status": "NOT_ACTIVE"
+                }
+            ]
+        }
+    }
+]

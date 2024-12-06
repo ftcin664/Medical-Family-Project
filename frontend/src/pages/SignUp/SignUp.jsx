@@ -127,11 +127,12 @@ const SignUp = () => {
                 console.log(form);
                 const response = await fileUploadApi(END_POINTS.SIGN_UP, form);
                 console.log("response: ", response);
-                if (response.status==201) {
-                    navigate(`/verify-otp?email=${formData.email}`);
+                if (!response.error) {
+                    toast.success("Verification code was sent to your email. Check your email!")
+                    navigate(`/verify-otp?id=${response.id}`);
                     // console.log("response: ", response);
                 } else {
-                    toast.error(response?.data?.message);
+                    toast.error(response?.error?.message);
                 }
             } else {
                 console.log("Form submission failed due to errors", formErrors);

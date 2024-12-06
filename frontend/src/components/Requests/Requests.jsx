@@ -26,7 +26,7 @@ const Requests = () => {
                 requestId,
                 status: "Declined",
             })
-        setRequests(requests.filter(request => request.id !== requestId));
+            setRequests(requests.filter(request => request.id !== requestId));
         } catch (error) {
             toast.error("Error!")
         }
@@ -38,7 +38,7 @@ const Requests = () => {
                 requestId,
                 status: "Accepted",
             })
-        setRequests(requests.filter(request => request.id !== requestId));
+            setRequests(requests.filter(request => request.id !== requestId));
         } catch (error) {
             toast.error("Error!")
         }

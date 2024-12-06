@@ -1,5 +1,5 @@
 import "./FamilyTreePage.scss";
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import MemberModal from "../MemberModal/MemberModal";
 import CommonModal from "../CommonModal/CommonModal";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,11 @@ import MyFamilyTree from "../FamilyTree/FamilyTree";
 import AddMember from "./AddMember";
 import { postApiRequest } from "../../utils/postRequest";
 import { toast } from 'react-toastify';
+import { AuthContext } from "../../context/authContext";
+import {getRelatives} from './fake';
+// import fakeData from './fakeData.json';
+
+
 
 const FamilyTreePage = () => {
     const [members, setMembers] = useState([]);
@@ -18,7 +23,10 @@ const FamilyTreePage = () => {
     const [modalShow, setModalShow] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
     const [addMember, setAddMember] = useState(false);
-
+    const { user } = useContext(AuthContext);
+    const [highlighted, setHighlighted] = useState(1);
+    const [prePartner, setPrePartner] = useState(null);
+    const [nextPartner, setNextPartner] = useState(null);
     const handleOpenInfo = (userId) => {
         const _selectedUser = members.find(member => member.id == userId);
         setSelectedUser(_selectedUser);
@@ -29,7 +37,7 @@ const FamilyTreePage = () => {
         const form = new FormData();
         form.append("email", formData.email);
         form.append("relationship_type", formData.relationship_type);
-        if(formData.is_linked == false) {
+        if (formData.is_linked == false) {
             try {
                 const response = await postApiRequest(END_POINTS.ADD_MEMBER, form);
                 if (response.status == 200) {
@@ -40,7 +48,7 @@ const FamilyTreePage = () => {
                     // Handle error
                     toast.error(`Invitation Error`)
                 }
-            } catch(err){
+            } catch (err) {
                 toast.error(`Invitation Error`)
             }
         } else {
@@ -48,13 +56,13 @@ const FamilyTreePage = () => {
             form.append("linkedAccount", formData.linkedAccounts);
             form.append("relation", formData.relation);
             form.append("mobileNumber", formData.mobileNumber);
-           
+
             form.append("country", formData.country);
             form.append("city", formData.city);
             form.append("dob", formData.dob);
             form.append("gender", formData.gender);
             // form.append("image", selectedImage)
-    
+
             const response = await fileUploadApi(END_POINTS.ADD_MEMBER, form);
             if (response.success) {
                 setAddMember(false);
@@ -66,44 +74,28 @@ const FamilyTreePage = () => {
     };
 
     useEffect(() => {
-        async function fetchMembers() {
-            const storedDataString = localStorage.getItem('user');
-            if (storedDataString) {
-                const parsedData = JSON.parse(storedDataString);
-                const userId = parsedData._id;
-                // response.allRelatives
-                setMembers([{ ...parsedData, year: new Date(parsedData.dob).getFullYear() }]);
-                // const response = await getApiRequest(END_POINTS.GET_RELATIONS + userId);
-                // if (response.success) {
-                //     setMembers(_members => [..._members]);
-                // }
-            }
-        }
-        fetchMembers();
+        (() => {
+            const data= getRelatives('1');
+            setPrePartner(data.previousPartnerId);
+            setNextPartner(data.nextPartnerId);
+            setMembers(data.relatives.map(user => ({ ...user, year: new Date(user.dob).getFullYear(), collapsed: false, gender: user.gender.toLowerCase() })))
+        })();
     }, []);
 
-    // useEffect(() => {
-    //     async function fetchMembers(params) {
-    //         const storedDataString = localStorage.getItem('user');
-    //         if (storedDataString) {
-    //             const parsedData = JSON.parse(storedDataString);
-    //             const userId = parsedData._id;
-    //             setMembers([{...parsedData, year: new Date(parsedData.dob).getFullYear()}])
-    //             try {
-    //                 const response = await getApiRequest(END_POINTS.GET_RELATIONS + userId);
-    //                 if (response.success) {
-    //                     setMembers(response.allRelatives)
-    //                 } else {
+    const onHighlighted = (id) => {
+        setHighlighted(id);
+        const data= getRelatives(id, null, null);
+        setMembers(data.relatives.map(user => ({ ...user, year: new Date(user.dob).getFullYear(), collapsed: false, gender: user.gender.toLowerCase() })))
+        setPrePartner(data.previousPartnerId);
+        setNextPartner(data.nextPartnerId);
+    }
 
-    //                 }
-    //             } catch (error) {
-
-    //             }
-    //         }
-    //     }
-    //     fetchMembers()
-    // }, [])
-
+    const setPartner = (id) => {
+        const data= getRelatives(highlighted.toString(), null, id);
+        setMembers(data.relatives.map(user => ({ ...user, year: new Date(user.dob).getFullYear(), collapsed: false, gender: user.gender.toLowerCase() })))
+        setPrePartner(data.previousPartnerId);
+        setNextPartner(data.nextPartnerId);
+    }
 
     return (
         <>
@@ -111,17 +103,17 @@ const FamilyTreePage = () => {
                 <>
                     <div style={{ height: '100%' }}>
                         {members.length > 0 && (
-                            <MyFamilyTree nodes={members} openInfo = {handleOpenInfo} onAdd={setAddMember} />
+                            <MyFamilyTree nodes={members} openInfo={handleOpenInfo} onAdd={setAddMember} highlighted = {highlighted.toString()} onHighlighted = {onHighlighted} prePartner={prePartner} nextPartner={nextPartner} setPartner={setPartner} />
                         )}
                     </div>
                 </>
             ) : (
                 <>
-                    <AddMember handleSubmit={handleSubmit}/>
+                    <AddMember handleSubmit={handleSubmit} />
                 </>
             )}
 
-            <MemberModal selectedUser={selectedUser}  handleDelete={() => { setModalShow(false); setShowDelete(true) }} handleEdit={() => { setShowEdit(true), setModalShow(false) }} show={modalShow}
+            <MemberModal selectedUser={selectedUser} handleDelete={() => { setModalShow(false); setShowDelete(true) }} handleEdit={() => { setShowEdit(true), setModalShow(false) }} show={modalShow}
                 onHide={() => setModalShow(false)} />
             {/* <CommonModal title="Report Member" subTitle="Confirm Report this family member?" submitBtnTxt='Report' show={showEdit} onHide={() => setShowEdit(false)} >
                 <div className="form-outline mb-4">

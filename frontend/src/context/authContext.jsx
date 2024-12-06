@@ -8,35 +8,37 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Load token from sessionStorage or localStorage
-    const savedToken = sessionStorage.getItem("authToken");
+    const savedToken = localStorage.getItem("authToken");
     if (savedToken) {
       setToken(savedToken);
       // Optionally fetch user details from token or backend
-      const userDetails = JSON.parse(sessionStorage.getItem("userDetails"));
+      const userDetails = JSON.parse(localStorage.getItem("userDetails"));
       setUser(userDetails);
     }
+    setIsLoading(false);
   }, []);
 
   const login = (token, userDetails) => {
     setToken(token);
     setUser(userDetails);
-    // Save to sessionStorage or localStorage
-    sessionStorage.setItem("authToken", token);
-    sessionStorage.setItem("userDetails", JSON.stringify(userDetails));
+    // Save to localStorage or localStorage
+    localStorage.setItem("authToken", token);
+    localStorage.setItem("userDetails", JSON.stringify(userDetails));
   };
 
   const logout = () => {
     setToken(null);
     setUser(null);
-    sessionStorage.removeItem("authToken");
-    sessionStorage.removeItem("userDetails");
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("userDetails");
   };
 
   return (
-    <AuthContext.Provider value={{ token, user, login, logout }}>
+    <AuthContext.Provider value={{ token, user, login, logout, isLoading }}>
       {children}
     </AuthContext.Provider>
   );

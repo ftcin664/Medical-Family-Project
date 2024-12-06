@@ -1,6 +1,5 @@
 import "./Tree.scss";
 import { Nav, Tab } from "react-bootstrap";
-import RequestCard from "../RequestCard/RequestCard";
 import FamilyTreePage from "../FamilyTreePage/FamilyTreePage";
 import Requests from "../Requests/Requests";
 

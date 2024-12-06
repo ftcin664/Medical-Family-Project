@@ -1,44 +1,29 @@
 import './FamilyTree.scss'
 import FamilyTree from '@balkangraph/familytree.js';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
-const MyFamilyTree = ({ nodes, openInfo, onAdd }) => {
+const MyFamilyTree = ({ nodes, openInfo, onAdd, highlighted, onHighlighted, prePartner, nextPartner, setPartner }) => {
+    MyFamilyTree.propTypes = {
+        nodes: PropTypes.array.isRequired,
+        openInfo: PropTypes.func.isRequired,
+        onAdd: PropTypes.func.isRequired,
+        highlighted: PropTypes.string.isRequired,
+        onHighlighted: PropTypes.func.isRequired,
+        prePartner: PropTypes.string,
+        nextPartner: PropTypes.string,
+        setPartner: PropTypes.func,
+    };
+
     const divRef = useRef(null);
 
     useEffect(() => {
+
         //family tree template
+
+        //default template for all nodes
         FamilyTree.templates.custom = Object.assign({}, FamilyTree.templates.tommy);
-        FamilyTree.templates.custom.size = [160, 175];
-        FamilyTree.templates.custom.node = `
-            <defs>
-                <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="5" result="blurred" />
-                    <feOffset dx="0" dy="0" result="offsetBlur" />
-                    <feFlood flood-color="rgba(0, 0, 0, 0.05)" result="color" />
-                    <feComposite in2="offsetBlur" operator="in" />
-                    <feComposite in2="SourceAlpha" operator="in" />
-                    <feMerge>
-                        <feMergeNode in="SourceAlpha" />
-                        <feMergeNode />
-                    </feMerge>
-                </filter>
-            </defs>
-            
-            <rect x="2" y="2" width="160" height="175" fill="none" stroke="none" filter="url(#shadow)" />
-            <rect x="0" y="0" width="160" height="175" fill="#fff" stroke="#0000000D" stroke-width="1" rx="15" ry="15" />
-        `;
-
-        // Profile image
-        FamilyTree.templates.custom.img_0 = `
-            <rect x="48" y="14" width="64" height="64" rx="5" ry="5" fill="white" stroke="#0E0E0E" stroke-width="2"></rect>
-            <defs>
-                <clipPath id="circleClip">
-                    <rect x="52" y="18" width="56" height="56" rx="3" ry="3" fill="white" stroke="gray" stroke-width="2"></rect>
-                </clipPath>
-            </defs>
-            <image x="52" y="18" width="56" height="56" href="http://localhost:3001/{val}" style="clip-path: url(#circleClip); border: 2px solid #ccc;"></image>
-        `;
-
+        FamilyTree.templates.custom.size = [160, 201];
         // Adjusted menu button with direct positioning
         FamilyTree.templates.custom.nodeMenuButton = `
             <g transform="matrix(1,0,0,1,140,15)" style="cursor: pointer;" onclick="handleMenuClick('{id}')" >
@@ -76,6 +61,49 @@ const MyFamilyTree = ({ nodes, openInfo, onAdd }) => {
             <text x="80" y="158" text-anchor="middle" style="font-size: 14px;" fill="#939393">{val}</text>
         `;
 
+        FamilyTree.templates.custom.node = `
+            <defs>
+                <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="5" result="blurred" />
+                    <feOffset dx="0" dy="0" result="offsetBlur" />
+                    <feFlood flood-color="rgba(0, 0, 0, 0.05)" result="color" />
+                    <feComposite in2="offsetBlur" operator="in" />
+                    <feComposite in2="SourceAlpha" operator="in" />
+                    <feMerge>
+                        <feMergeNode in="SourceAlpha" />
+                        <feMergeNode />
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <rect x="2" y="2" width="160" height="201" fill="none" stroke="none" filter="url(#shadow)" />
+            <rect x="0" y="0" width="160" height="201" fill="#fff" stroke="#0000000D" stroke-width="1" rx="15" ry="15" />
+        `;
+
+        FamilyTree.templates.custom_male = Object.assign({}, FamilyTree.templates.custom);
+        FamilyTree.templates.custom_female = Object.assign({}, FamilyTree.templates.custom);
+
+        // Profile image
+        FamilyTree.templates.custom_male.img_0 = `
+            <rect x="48" y="14" width="64" height="64" rx="5" ry="5" fill="white" stroke="#0E0E0E" stroke-width="2"></rect>
+            <defs>
+                <clipPath id="roundedClip">
+                    <rect x="52" y="18" width="56" height="56" rx="3" ry="3" fill="white" stroke="gray" stroke-width="2"></rect>
+                </clipPath>
+            </defs>
+            <image x="52" y="18" width="56" height="56" href="http://localhost:3001/{val}" style="clip-path: url(#roundedClip); border: 2px solid #ccc;"></image>
+        `;
+
+        FamilyTree.templates.custom_female.img_0 = `
+        <circle cx="80" cy="46" r="32" fill="white" stroke="#0E0E0E" stroke-width="2"></circle>
+        <defs>
+            <clipPath id="circleClip">
+                <circle cx="80" cy="46" r="28"></circle>
+            </clipPath>
+        </defs>
+        <image x="52" y="18" width="56" height="56" href="http://localhost:3001/{val}" style="clip-path: url(#circleClip);"></image>
+    `
+
         //family tree node template for current user
         FamilyTree.templates.current = Object.assign({}, FamilyTree.templates.tommy);
         FamilyTree.templates.current.size = [160, 201];
@@ -105,17 +133,6 @@ const MyFamilyTree = ({ nodes, openInfo, onAdd }) => {
     </g>
         `;
 
-        // Profile image
-        FamilyTree.templates.current.img_0 = `
-    <circle cx="80" cy="46" r="32" fill="#0E0E0E" stroke="#fff" stroke-width="1"></circle>
-    <defs>
-        <clipPath id="circleClip">
-            <circle cx="80" cy="46" r="28"></circle>
-        </clipPath>
-    </defs>
-    <image x="52" y="18" width="56" height="56" href="http://localhost:3001/{val}" 
-           style="clip-path: url(#circleClip);"></image>
-`;
 
         // Adjusted menu button with direct positioning
         FamilyTree.templates.current.nodeMenuButton = `
@@ -139,25 +156,16 @@ const MyFamilyTree = ({ nodes, openInfo, onAdd }) => {
                 }
             </style>
         `;
-
-        // Node text fields (name, year, city, country) layout
-        //         FamilyTree.templates.current.field_0 = `
-        //             <text x="80" y="108" text-anchor="middle" style="font-size: 16px; font-weight: bold;" fill="#fff">{val}
-        //             <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-        // <path d="M6.11274 16.5L4.64216 14.0686L1.87745 13.4412L2.13235 10.6176L0.25 8.5L2.13235 6.38235L1.87745 3.55882L4.64216 2.93137L6.11274 0.5L8.72059 1.61765L11.3284 0.5L12.799 2.93137L15.5637 3.55882L15.3088 6.38235L17.1912 8.5L15.3088 10.6176L15.5637 13.4412L12.799 14.0686L11.3284 16.5L8.72059 15.3824L6.11274 16.5ZM7.72059 11.3235L12.3873 6.67647L11.3873 5.67647L7.72059 9.32353L6.05392 7.67647L5.05392 8.67647L7.72059 11.3235Z" fill="#00B147"/>
-        // </svg>
-        //             </text>
-        //         `;
         FamilyTree.templates.current.field_0 = `
-    <foreignObject x="0" y="90" text-anchor="start" width="160" height="21">
-        <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; padding: 0px 4px; justify-content: center; align-items: center; width: 100%; height: 100%;">
-            <p style="margin: 0; color: #fff; font-size: 18px;">{val}</p>
-            <svg x="0" y="-10" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.11274 16.5L4.64216 14.0686L1.87745 13.4412L2.13235 10.6176L0.25 8.5L2.13235 6.38235L1.87745 3.55882L4.64216 2.93137L6.11274 0.5L8.72059 1.61765L11.3284 0.5L12.799 2.93137L15.5637 3.55882L15.3088 6.38235L17.1912 8.5L15.3088 10.6176L15.5637 13.4412L12.799 14.0686L11.3284 16.5L8.72059 15.3824L6.11274 16.5ZM7.72059 11.3235L12.3873 6.67647L11.3873 5.67647L7.72059 9.32353L6.05392 7.67647L5.05392 8.67647L7.72059 11.3235Z" fill="#00B147"/>
-        </svg>
-        </div>
-    </foreignObject>
-`;
+            <foreignObject x="0" y="90" text-anchor="start" width="160" height="21">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; padding: 0px 4px; justify-content: center; align-items: center; width: 100%; height: 100%;">
+                    <p style="margin: 0; color: #fff; font-size: 18px;">{val}</p>
+                    <svg x="0" y="-10" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.11274 16.5L4.64216 14.0686L1.87745 13.4412L2.13235 10.6176L0.25 8.5L2.13235 6.38235L1.87745 3.55882L4.64216 2.93137L6.11274 0.5L8.72059 1.61765L11.3284 0.5L12.799 2.93137L15.5637 3.55882L15.3088 6.38235L17.1912 8.5L15.3088 10.6176L15.5637 13.4412L12.799 14.0686L11.3284 16.5L8.72059 15.3824L6.11274 16.5ZM7.72059 11.3235L12.3873 6.67647L11.3873 5.67647L7.72059 9.32353L6.05392 7.67647L5.05392 8.67647L7.72059 11.3235Z" fill="#00B147"/>
+                </svg>
+                </div>
+            </foreignObject>
+        `;
         FamilyTree.templates.current.field_1 = `
             <text x="50" y="133" text-anchor="middle" style="font-size: 16px;" fill="#fff">{val}</text>
         `;
@@ -167,9 +175,280 @@ const MyFamilyTree = ({ nodes, openInfo, onAdd }) => {
         FamilyTree.templates.current.field_3 = `
             <text x="80" y="158" text-anchor="middle" style="font-size: 14px;" fill="#fff">{val}</text>
         `;
+        // FamilyTree.templates.custom_male = Object.assign({}, FamilyTree.templates.custom);
+        FamilyTree.templates.current_male = Object.assign({}, FamilyTree.templates.current);
+        FamilyTree.templates.current_female = Object.assign({}, FamilyTree.templates.current);
+
+        FamilyTree.templates.current_female.img_0 = `
+            <circle cx="80" cy="46" r="32" fill="#0E0E0E" stroke="#fff" stroke-width="1"></circle>
+            <defs>
+                <clipPath id="circleClip">
+                    <circle cx="80" cy="46" r="28"></circle>
+                </clipPath>
+            </defs>
+            <image x="52" y="18" width="56" height="56" href="http://localhost:3001/{val}" 
+                style="clip-path: url(#circleClip);"></image>
+        `;
+        FamilyTree.templates.current_male.img_0 = `
+            <rect x="48" y="14" width="64" height="64" rx="5" ry="5" fill="#0E0E0E" stroke="#fff" stroke-width="1"></rect>
+            <defs>
+                <clipPath id="roundedClip">
+                    <rect x="52" y="18" width="56" height="56" rx="3" ry="3"></rect>
+                </clipPath>
+            </defs>
+            <image x="52" y="18" width="56" height="56" href="http://localhost:3001/{val}" style="clip-path: url(#roundedClip);"></image>
+        `;
+
+        FamilyTree.templates.highlighted = Object.assign({}, FamilyTree.templates.custom);
+        FamilyTree.templates.highlighted.node = `
+        <defs>
+                <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="5" result="blurred" />
+                    <feOffset dx="0" dy="0" result="offsetBlur" />
+                    <feFlood flood-color="rgba(0, 0, 0, 0.05)" result="color" />
+                    <feComposite in2="offsetBlur" operator="in" />
+                    <feComposite in2="SourceAlpha" operator="in" />
+                    <feMerge>
+                        <feMergeNode in="SourceAlpha" />
+                        <feMergeNode />
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <rect x="2" y="2" width="160" height="201" fill="none" stroke="none" filter="url(#shadow)" />
+            <rect x="0" y="0" width="160" height="201" fill="#ddd" stroke="#0000000D" stroke-width="1" rx="15" ry="15" />
+        `;
+        FamilyTree.templates.highlighted_male = Object.assign({}, FamilyTree.templates.highlighted);
+        FamilyTree.templates.highlighted_female = Object.assign({}, FamilyTree.templates.highlighted);
+        FamilyTree.templates.highlighted_male.img_0 = FamilyTree.templates.current_male.img_0;
+        FamilyTree.templates.highlighted_female.img_0 = FamilyTree.templates.current_female.img_0;
+
+        //default template for all nodes
+        FamilyTree.templates.partnerr = Object.assign({}, FamilyTree.templates.tommy);
+        FamilyTree.templates.partnerr.size = [160, 201];
+        // Adjusted menu button with direct positioning
+        FamilyTree.templates.partnerr.nodeMenuButton = `
+            <g transform="matrix(1,0,0,1,140,15)" style="cursor: pointer;" onclick="handleMenuClick('{id}')" >
+            <rect x="-10" y="-10" width="30" height="40" fill="transparent" />
+                <circle cx="5" cy="5" r="2" fill="#999" />
+                <circle cx="5" cy="10" r="2" fill="#999" />
+                <circle cx="5" cy="15" r="2" fill="#999" />
+            </g>
+        `;
+
+        // Manually setting the x and y position for the menu button
+        FamilyTree.templates.partnerr.defs = `
+            <style>
+                #menu-icon circle {
+                    transition: fill 0.3s ease;
+                }
+    
+                #menu-icon:hover circle {
+                    fill: #333;
+                }
+            </style>
+        `;
+
+        // Node text fields (name, year, city, country) layout
+        FamilyTree.templates.partnerr.field_0 = `
+            <text x="80" y="108" text-anchor="middle" style="font-size: 16px; font-weight: bold;" fill="#000">{val}</text>
+        `;
+        FamilyTree.templates.partnerr.field_1 = `
+            <text x="50" y="133" text-anchor="middle" style="font-size: 16px;" fill="#939393">{val}</text>
+        `;
+        FamilyTree.templates.partnerr.field_2 = `
+            <text x="110" y="133" text-anchor="middle" style="font-size: 14px;" fill="#939393">{val}</text>
+        `;
+        FamilyTree.templates.partnerr.field_3 = `
+            <text x="80" y="158" text-anchor="middle" style="font-size: 14px;" fill="#939393">{val}</text>
+        `;
+
+        FamilyTree.templates.partnerr.node = `
+            <defs>
+                <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="5" result="blurred" />
+                    <feOffset dx="0" dy="0" result="offsetBlur" />
+                    <feFlood flood-color="rgba(0, 0, 0, 0.05)" result="color" />
+                    <feComposite in2="offsetBlur" operator="in" />
+                    <feComposite in2="SourceAlpha" operator="in" />
+                    <feMerge>
+                        <feMergeNode in="SourceAlpha" />
+                        <feMergeNode />
+                    </feMerge>
+                </filter>
+            </defs>
+            
+            <rect x="2" y="2" width="160" height="201" fill="none" stroke="none" filter="url(#shadow)" />
+            <rect x="0" y="0" width="160" height="201" fill="#fff" stroke="#0000000D" stroke-width="1" rx="15" ry="15" />
+        `;
+
+        FamilyTree.templates.partnerr_male = Object.assign({}, FamilyTree.templates.partnerr);
+        FamilyTree.templates.partnerr_female = Object.assign({}, FamilyTree.templates.partnerr);
+
+        // Profile image
+        FamilyTree.templates.partnerr_male.img_0 = `
+            <rect x="48" y="14" width="64" height="64" rx="5" ry="5" fill="white" stroke="#0E0E0E" stroke-width="2"></rect>
+            <defs>
+                <clipPath id="roundedClip">
+                    <rect x="52" y="18" width="56" height="56" rx="3" ry="3" fill="white" stroke="gray" stroke-width="2"></rect>
+                </clipPath>
+            </defs>
+            <image x="52" y="18" width="56" height="56" href="http://localhost:3001/{val}" style="clip-path: url(#roundedClip); border: 2px solid #ccc;"></image>
+        `;
+
+        FamilyTree.templates.partnerr_female.img_0 = `
+        <circle cx="80" cy="46" r="32" fill="white" stroke="#0E0E0E" stroke-width="2"></circle>
+        <defs>
+            <clipPath id="circleClip">
+                <circle cx="80" cy="46" r="28"></circle>
+            </clipPath>
+        </defs>
+        <image x="52" y="18" width="56" height="56" href="http://localhost:3001/{val}" style="clip-path: url(#circleClip);"></image>
+    `;
+
+        FamilyTree.templates.middle_male = Object.assign({}, FamilyTree.templates.partnerr_male);
+        FamilyTree.templates.middle_female = Object.assign({}, FamilyTree.templates.partnerr_female);
+        FamilyTree.templates.left_male = Object.assign({}, FamilyTree.templates.partnerr_male);
+        FamilyTree.templates.left_female = Object.assign({}, FamilyTree.templates.partnerr_female);
+        FamilyTree.templates.right_male = Object.assign({}, FamilyTree.templates.partnerr_male);
+        FamilyTree.templates.right_female = Object.assign({}, FamilyTree.templates.partnerr_female);
+        FamilyTree.templates.none_male = Object.assign({}, FamilyTree.templates.partnerr_male);
+        FamilyTree.templates.none_female = Object.assign({}, FamilyTree.templates.partnerr_female);
+
+
+        FamilyTree.templates.left_male.node = `
+    <defs>
+        <!-- Shadow for the node -->
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="5" result="blurred" />
+            <feOffset dx="0" dy="0" result="offsetBlur" />
+            <feFlood flood-color="rgba(0, 0, 0, 0.05)" result="color" />
+            <feComposite in2="offsetBlur" operator="in" />
+            <feComposite in2="SourceAlpha" operator="in" />
+            <feMerge>
+                <feMergeNode in="SourceAlpha" />
+                <feMergeNode />
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- Node Shadow -->
+    <rect x="2" y="2" width="160" height="201" fill="none" stroke="none" filter="url(#shadow)" />
+    <!-- Node Background -->
+    <rect x="0" y="0" width="160" height="201" fill="#fff" stroke="#0000000D" stroke-width="1" rx="15" ry="15" />
+
+    <!-- Pagination Buttons -->
+    <!-- Disabled Prev Button -->
+    <g class="prev-button" onclick="handlePreve()">
+        <rect x="38" y="170" width="40" height="25" fill="#e0e0e0" rx="12.5" ry="12.5" stroke="#d0d0d0" />
+        <svg x="48" y="173" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 19L8 12L15 5" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </g>
+
+    <!-- Enabled Next Button -->
+    <g class="next-button" cursor="pointer" onclick="handleNext()">
+        <rect x="82" y="170" width="40" height="25" fill="#f2f2f2" rx="12.5" ry="12.5" stroke="#ccc" />
+        <svg x="92" y="173" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 19L16 12L9 5" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </g>
+`;
+
+        FamilyTree.templates.middle_male.node = `
+<defs>
+    <!-- Shadow for the node -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="5" result="blurred" />
+        <feOffset dx="0" dy="0" result="offsetBlur" />
+        <feFlood flood-color="rgba(0, 0, 0, 0.05)" result="color" />
+        <feComposite in2="offsetBlur" operator="in" />
+        <feComposite in2="SourceAlpha" operator="in" />
+        <feMerge>
+            <feMergeNode in="SourceAlpha" />
+            <feMergeNode />
+        </feMerge>
+    </filter>
+</defs>
+
+<!-- Node Shadow -->
+<rect x="2" y="2" width="160" height="201" fill="none" stroke="none" filter="url(#shadow)" />
+<!-- Node Background -->
+<rect x="0" y="0" width="160" height="201" fill="#fff" stroke="#0000000D" stroke-width="1" rx="15" ry="15" />
+
+<!-- Pagination Buttons -->
+<!-- Disabled Prev Button -->
+<g class="prev-button" cursor="pointer" onclick="handlePreve()">
+    <rect x="38" y="170" width="40" height="25" fill="#f2f2f2" rx="12.5" ry="12.5" stroke="#ccc" />
+    <svg x="48" y="173" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 19L8 12L15 5" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</g>
+
+<!-- Enabled Next Button -->
+<g class="next-button" cursor="pointer" onclick="handleNext()">
+    <rect x="82" y="170" width="40" height="25" fill="#f2f2f2" rx="12.5" ry="12.5" stroke="#ccc" />
+    <svg x="92" y="173" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 19L16 12L9 5" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</g>
+`;
+
+        FamilyTree.templates.right_male.node = `
+<defs>
+    <!-- Shadow for the node -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="5" result="blurred" />
+        <feOffset dx="0" dy="0" result="offsetBlur" />
+        <feFlood flood-color="rgba(0, 0, 0, 0.05)" result="color" />
+        <feComposite in2="offsetBlur" operator="in" />
+        <feComposite in2="SourceAlpha" operator="in" />
+        <feMerge>
+            <feMergeNode in="SourceAlpha" />
+            <feMergeNode />
+        </feMerge>
+    </filter>
+</defs>
+
+<!-- Node Shadow -->
+<rect x="2" y="2" width="160" height="201" fill="none" stroke="none" filter="url(#shadow)" />
+<!-- Node Background -->
+<rect x="0" y="0" width="160" height="201" fill="#fff" stroke="#0000000D" stroke-width="1" rx="15" ry="15" />
+
+<!-- Pagination Buttons -->
+<!-- Disabled Prev Button -->
+<!-- Enabled Prev Button -->
+<g class="prev-button" cursor="pointer" onclick="handlePreve()">
+    <rect x="38" y="170" width="40" height="25" fill="#f2f2f2" rx="12.5" ry="12.5" stroke="#ccc" />
+    <svg x="48" y="173" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 19L8 12L15 5" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</g>
+
+<!-- Disabled Next Button -->
+<g class="next-button" cursor="not-allowed" onclick="">
+    <rect x="82" y="170" width="40" height="25" fill="#e0e0e0" rx="12.5" ry="12.5" stroke="#d0d0d0" />
+    <svg x="92" y="173" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 19L16 12L9 5" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</g>
+`;
+
+        FamilyTree.templates.middle_female.node = FamilyTree.templates.middle_male.node;
+        FamilyTree.templates.left_female.node = FamilyTree.templates.left_male.node;
+        FamilyTree.templates.right_female.node = FamilyTree.templates.right_male.node;
+        FamilyTree.templates.middle_female.img_0 = FamilyTree.templates.custom_female.img_0;
+        FamilyTree.templates.left_female.img_0 = FamilyTree.templates.custom_female.img_0;
+        FamilyTree.templates.right_female.img_0 = FamilyTree.templates.custom_female.img_0;
+        console.log(FamilyTree.templates.middle_female.img_0);
+        // FamilyTree.templates.none_female.node = FamilyTree.templates.middle_male.node;
 
         // Initialize the FamilyTree
         const family = new FamilyTree(divRef.current, {
+            dottedLines: [
+                {from: '1', to: '4'},
+                {from: '2', to: '4'},
+            ],
             nodes: nodes,
             nodeBinding: {
                 field_0: 'fullname',  // Full name
@@ -178,31 +457,75 @@ const MyFamilyTree = ({ nodes, openInfo, onAdd }) => {
                 field_3: 'country',   // Country
                 img_0: 'image_url',   // Image_url
             },
-            template: 'current', // Use the custom template
+            template: 'custom', // Use the custom template
             connectors: {
                 color: '#00aaff',
                 lineType: 'solid',
             },
             nodeMenu: {
-            }
+            },
+            tags: {
+                "user-male": {
+                    template: "current_male"
+                },
+                "user-female": {
+                    template: "current_female",
+                },
+                "highlighted-male": {
+                    template: "highlighted_male"
+                },
+                "highlighted-female": {
+                    template: "highlighted_female"
+                },
+                "middle-male": {
+                    template: "middle_male"
+                },
+                "right-male": {
+                    template: "right_male"
+                },
+                "left-male": {
+                    template: "left_male"
+                },
+                "left-female": {
+                    template: "left_female"
+                },
+                "right-female": {
+                    template: "right_female"
+                },
+                "middle-female": {
+                    template: "middle_female"
+                },
+
+            },
         });
 
+        family.onNodeClick((args) => {
+            if (args.node.id == highlighted) return false;
+            onHighlighted(args.node.id)
+            return false; // Prevents the event from propagating further
+        });
+
+        family.maximize(highlighted);
         window.handleMenuClick = (nodeId) => {
-            // Find the clicked node by its ID
-            event.stopPropagation();  // Prevents the click from bubbling up to the node
-            const clickedNode = nodes.find(node => node.id == nodeId);
-            if (clickedNode) {
-                openInfo(clickedNode.id);
-            }
+            event.stopPropagation();
+            openInfo(nodeId)
         };
 
         window.handleAdd = () => {
             event.stopPropagation();
             onAdd(true);
         }
+        window.handlePreve = () => {
+            event.stopPropagation();
+            setPartner(prePartner);
+        }
+        window.handleNext = () => {
+            event.stopPropagation();
+            setPartner(nextPartner);
+        }
 
         return () => {
-            // Clean up if needed
+            delete window.handleMenuClick;
             delete window.handleMenuClick;
         };
     }, [nodes]);

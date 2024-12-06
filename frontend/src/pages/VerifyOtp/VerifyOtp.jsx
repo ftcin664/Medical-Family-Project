@@ -16,7 +16,7 @@ const VerifyOtp = () => {
   const {login} = useContext(AuthContext);
 
   // Get query parameter values
-  const email = searchParams.get('email'); // Replace 'paramName' with the actual query param key
+  const id = searchParams.get('id'); // Replace 'paramName' with the actual query param key
 
 
   const validateOtp = () => {
@@ -33,11 +33,11 @@ const VerifyOtp = () => {
 
     if (validateOtp()) {
       try {
-        const payload = { email, otp };
+        const payload = { id, otp };
         const response = await postApiRequest(END_POINTS.VERIFY_OTP, payload);
         console.log(response)
         if (!response.error) {
-          login(response.token, response.token);
+          login(response.token, response.user);
           navigate('/tree')
         }
         console.log("response", response);
