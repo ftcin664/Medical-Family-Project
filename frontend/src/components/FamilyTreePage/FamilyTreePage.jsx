@@ -11,7 +11,7 @@ import AddMember from "./AddMember";
 import { postApiRequest } from "../../utils/postRequest";
 import { toast } from 'react-toastify';
 import { AuthContext } from "../../context/authContext";
-import {getRelatives} from './fake';
+import { getRelatives } from './getData';
 // import fakeData from './fakeData.json';
 
 
@@ -75,26 +75,27 @@ const FamilyTreePage = () => {
 
     useEffect(() => {
         (() => {
-            const data= getRelatives('1');
+            const data = getRelatives(1);
             setPrePartner(data.previousPartnerId);
             setNextPartner(data.nextPartnerId);
-            setMembers(data.relatives.map(user => ({ ...user, year: new Date(user.dob).getFullYear(), collapsed: false, gender: user.gender.toLowerCase() })))
+            setMembers(data.relatives)
         })();
     }, []);
 
     const onHighlighted = (id) => {
         setHighlighted(id);
-        const data= getRelatives(id, null, null);
-        setMembers(data.relatives.map(user => ({ ...user, year: new Date(user.dob).getFullYear(), collapsed: false, gender: user.gender.toLowerCase() })))
+        console.log("id", id);
+        const data = getRelatives(id, null, null);
         setPrePartner(data.previousPartnerId);
         setNextPartner(data.nextPartnerId);
+        setMembers(data.relatives)
     }
 
     const setPartner = (id) => {
-        const data= getRelatives(highlighted.toString(), null, id);
-        setMembers(data.relatives.map(user => ({ ...user, year: new Date(user.dob).getFullYear(), collapsed: false, gender: user.gender.toLowerCase() })))
+        const data = getRelatives(highlighted, null, id);
         setPrePartner(data.previousPartnerId);
         setNextPartner(data.nextPartnerId);
+        setMembers(data.relatives)
     }
 
     return (
@@ -102,8 +103,8 @@ const FamilyTreePage = () => {
             {!addMember ? (
                 <>
                     <div style={{ height: '100%' }}>
-                        {members.length > 0 && (
-                            <MyFamilyTree nodes={members} openInfo={handleOpenInfo} onAdd={setAddMember} highlighted = {highlighted.toString()} onHighlighted = {onHighlighted} prePartner={prePartner} nextPartner={nextPartner} setPartner={setPartner} />
+                        {members?.length > 0 && (
+                            <MyFamilyTree nodes={members} openInfo={handleOpenInfo} onAdd={setAddMember} highlighted={highlighted} onHighlighted={onHighlighted} prePartner={prePartner} nextPartner={nextPartner} setPartner={setPartner} />
                         )}
                     </div>
                 </>

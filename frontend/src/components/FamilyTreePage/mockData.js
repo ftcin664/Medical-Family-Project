@@ -1,40 +1,40 @@
 export const mockData =  [
 
-    { id: 1, pids: [2], orderId: 1, relationship: "Dad", name: "Jessie England", img: "https://cdn.balkan.app/shared/m60/1.jpg", bdate: 1800, ddate: 1900 },
+    { id: 1, pids: [2], orderId: 1, gender: "non-binary", relationship: "Dad", name: "Jessie England", img: "https://cdn.balkan.app/shared/m60/1.jpg", bdate: 1800, ddate: 1900 },
  
-    { id: 2, pids: [1], orderId: 2, relationship: "Mom", name: "Quinn West", img: "https://cdn.balkan.app/shared/w60/1.jpg", bdate: 1800, ddate: 1900 },
+    { id: 2, pids: [1], orderId: 2, gender: "female", relationship: "Mom", name: "Quinn West", img: "https://cdn.balkan.app/shared/w60/1.jpg", bdate: 1800, ddate: 1900 },
  
-    { id: 3, mid: 1, fid: 2, pids: [6], orderId: 4, relationship: "Great mainfather", name: "Ryan Walmsley", img: "https://cdn.balkan.app/shared/m60/2.jpg", bdate: 1830, ddate: 1930 },
+    { id: 3, mid: 1, fid: 2, pids: [6], orderId: 4, gender: "male", relationship: "Great mainfather", name: "Ryan Walmsley", img: "https://cdn.balkan.app/shared/m60/2.jpg", bdate: 1830, ddate: 1930 },
  
  
-    { id: 4, pids: [5], relationship: "Great Great mainfather", name: "Ray Crook", img: "https://cdn.balkan.app/shared/m60/3.jpg", bdate: 1800, ddate: 1900 },
+    { id: 4, pids: [5], relationship: "Great Great mainfather", gender: "male",  name: "Ray Crook", img: "https://cdn.balkan.app/shared/m60/3.jpg", bdate: 1800, ddate: 1900 },
  
-    { id: 5, pids: [4], relationship: "Great Great mainmother", name: "Shiloh Armstrong", img: "https://cdn.balkan.app/shared/w60/2.jpg", bdate: 1800, ddate: 1900 },
+    { id: 5, pids: [4], relationship: "Great Great mainmother", gender: "female", name: "Shiloh Armstrong", img: "https://cdn.balkan.app/shared/w60/2.jpg", bdate: 1800, ddate: 1900 },
  
-    { id: 6, mid: 4, fid: 5, pids: [3], orderId: 3, relationship: "Great mainmother", name: "Vita Hare", img: "https://cdn.balkan.app/shared/w60/3.jpg", bdate: 1830, ddate: 1930 },
+    { id: 6, mid: 4, fid: 5, pids: [3], orderId: 3, gender: "female", relationship: "Great mainmother", name: "Vita Hare", img: "https://cdn.balkan.app/shared/w60/3.jpg", bdate: 1830, ddate: 1930 },
  
  
     { id: 7, mid: 3, fid: 6, pids: [14], relationship: "P.mainfather", gender: "male", name: "Ruby Walker", img: "https://cdn.balkan.app/shared/m60/4.jpg", bdate: 1950 },
  
  
-    { id: 8, pids: [9], relationship: "Great Great mainfather", name: "Courtney Riley", img: "https://cdn.balkan.app/shared/m60/4.jpg", bdate: 1800, ddate: 1900 },
+    { id: 8, pids: [9], relationship: "Great Great mainfather", gender: "male", name: "Courtney Riley", img: "https://cdn.balkan.app/shared/m60/4.jpg", bdate: 1800, ddate: 1900 },
  
-    { id: 9, pids: [8], relationship: "Great Great mainmother", name: "Indiana Collett", img: "https://cdn.balkan.app/shared/w60/5.jpg", bdate: 1800, ddate: 1900 },
+    { id: 9, pids: [8], relationship: "Great Great mainmother", gender: "female", name: "Indiana Collett", img: "https://cdn.balkan.app/shared/w60/5.jpg", bdate: 1800, ddate: 1900 },
  
-    { id: 10, mid: 8, fid: 9, pids: [13], relationship: "Great mainfather", name: "Gill Lyons", img: "https://cdn.balkan.app/shared/m60/5.jpg", bdate: 1830, ddate: 1930 },
+    { id: 10, mid: 8, fid: 9, pids: [13], relationship: "Great mainfather", gender: "male", name: "Gill Lyons", img: "https://cdn.balkan.app/shared/m60/5.jpg", bdate: 1830, ddate: 1930 },
  
  
-    { id: 11, pids: [12], relationship: "Great Great mainfather", name: "Lacey Beck", img: "https://cdn.balkan.app/shared/m60/6.jpg", bdate: 1800, ddate: 1900 },
+    { id: 11, pids: [12], relationship: "Great Great mainfather", gender: "male", name: "Lacey Beck", img: "https://cdn.balkan.app/shared/m60/6.jpg", bdate: 1800, ddate: 1900 },
  
-    { id: 12, pids: [11], relationship: "Great Great mainmother", name: "Erin Ridley", img: "https://cdn.balkan.app/shared/w60/6.jpg", bdate: 1800, ddate: 1900 },
+    { id: 12, pids: [11], relationship: "Great Great mainmother", gender: "female", name: "Erin Ridley", img: "https://cdn.balkan.app/shared/w60/6.jpg", bdate: 1800, ddate: 1900 },
  
-    { id: 13, mid: 11, fid: 12, pids: [10], relationship: "Great mainmother", name: "Emory Wilkins", img: "https://cdn.balkan.app/shared/w60/7.jpg", bdate: 1830, ddate: 1930 },
+    { id: 13, mid: 11, fid: 12, pids: [10], relationship: "Great mainmother", gender: "female", name: "Emory Wilkins", img: "https://cdn.balkan.app/shared/w60/7.jpg", bdate: 1830, ddate: 1930 },
  
  
     { id: 14, mid: 10, fid: 13, pids: [7], relationship: "P.mainmother", gender: "female", name: "Felix Stanley", img: "https://cdn.balkan.app/shared/w60/8.jpg" },
  
  
-    { id: 15, mid: 14, fid: 7, pids: [1015, 1016], relationship: "Dad", gender: "male", name: "Ronnie Sheldon", img: "https://cdn.balkan.app/shared/m60/7.jpg" },
+    { id: 15, mid: 14, fid: 7, pids: [1015], relationship: "Dad", gender: "male", name: "Ronnie Sheldon", img: "https://cdn.balkan.app/shared/m60/7.jpg" },
  
   
  
