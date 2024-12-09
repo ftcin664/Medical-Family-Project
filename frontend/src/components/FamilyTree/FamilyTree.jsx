@@ -56,7 +56,6 @@ const MyFamilyTree = ({ nodes, openInfo, onAdd, highlighted, onHighlighted, preP
             },
             nodeMenu: {
             },
-            orderBy: ['orderId'],
             tags: {
                 "user-male": {
                     template: "current_male"
@@ -112,9 +111,17 @@ const MyFamilyTree = ({ nodes, openInfo, onAdd, highlighted, onHighlighted, preP
                 "right-non-binary": {
                     template: "right_non_binary"
                 },
+                "none-non-binary": {
+                    template: "none_non_binary"
+                },
+                "none-male": {
+                    template: "none_male"
+                },
+                "none-female": {
+                    template: "none_female"
+                }
             },
             roots: [nodes[0].id]
-            // roots: roots
         });
         family.expand("all");
         console.log("nodes", nodes);

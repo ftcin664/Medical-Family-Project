@@ -47,9 +47,21 @@ function getRelatives(userId, previousUserId, selectedPartner = null) {
         _siblings = mockData.filter(_user => (_user.mid === user.mid && _user.fid === user.fid) && (_user.id !== user.id)).map(_user => ({ ..._user, name: formatName(_user.name) }));
     }
     _siblings.push({ ...user, name: formatName(user.name), tags: ['highlighted-' + user.gender] });
-
-    _siblings.sort((a, b) => new Date(a.bdate) - new Date(b.bdate));
-
+    console.log("siblings", _siblings);
+    const genderOrder = {
+        male: 1,
+        female: 2,
+        nonBinary: 3,
+    };
+    const sortChildren = (a,b) => {
+        const date = new Date(a.bdate) - new Date(b.bdate);
+        if(date != 0){
+            return date;
+        }
+        return genderOrder[a.gender] - genderOrder[b.gender];
+    }
+    _siblings.sort((a, b) => sortChildren(a,b));
+    console.log("siblings", _siblings);
 
     let children = [];
 
@@ -100,11 +112,12 @@ function getRelatives(userId, previousUserId, selectedPartner = null) {
         // }
 
         children = mockData.filter(_user => (_user.mid === partner.id && _user.fid === user.id) || (_user.fid === partner.id && _user.mid === user.id));
-        children.sort((a, b) => new Date(a.bdate) - new Date(b.bdate));
-        children = children.map(child => ({ ...child, name: formatName(child.name) }));
+        children.sort((a, b) => sortChildren(a,b));
+        children = children.map(child => ({ ...child, name: formatName(child.name), tags: ['common-' + child.gender] }));
     }
+    console.log("Siblings", _siblings);
     let relatives = [...parents, ..._siblings, ...children];
-    console.log("relatives", relatives);
+    // console.log("relatives", relatives);
     return { relatives, previousPartnerId, nextPartnerId };
 }
 
